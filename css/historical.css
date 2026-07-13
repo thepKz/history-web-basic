@@ -1,0 +1,193 @@
+/* Documentary visual pass. Images below were extracted from the source document supplied by the project owner. */
+.hero__backdrop {
+    background: linear-gradient(90deg, rgba(15, 16, 15, .94), rgba(15, 16, 15, .7) 47%, rgba(15, 16, 15, .34)), url('../images/history/image33.png') center 44%/cover
+}
+
+.hero__content {
+    max-width: 760px
+}
+
+.hero__title {
+    max-width: 660px
+}
+
+.intro__image img {
+    filter: grayscale(.25) contrast(1.08)
+}
+
+.chapter-map {
+    padding-top: 68px
+}
+
+.chapter-map__head {
+    max-width: 820px
+}
+
+.chapter-grid {
+    gap: 2px;
+    background: var(--line)
+}
+
+.chapter {
+    min-height: 530px;
+    padding: 28px;
+    background-color: #20221f
+}
+
+.chapter:nth-child(1) {
+    background-image: url('../images/history/image45.png')
+}
+
+.chapter:nth-child(2) {
+    background-image: url('../images/history/image36.png')
+}
+
+.chapter:nth-child(3) {
+    background-image: url('../images/history/image38.png')
+}
+
+.chapter:before {
+    background: linear-gradient(0deg, rgba(12, 13, 12, .94) 4%, rgba(12, 13, 12, .2) 72%)
+}
+
+.chapter__content {
+    background: none;
+    border-left: 0;
+    padding: 0 0 5px
+}
+
+.chapter__period {
+    display: block;
+    margin-bottom: 18px
+}
+
+.chapter h3 {
+    max-width: 390px;
+    margin: 0 0 16px;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, .45)
+}
+
+.chapter p {
+    font-size: 15px
+}
+
+.visual-strip {
+    gap: 2px;
+    padding-top: 2px;
+    background: var(--line)
+}
+
+.visual-strip figure {
+    background: var(--ink);
+    overflow: hidden
+}
+
+.visual-strip img {
+    height: 300px;
+    filter: grayscale(.18) contrast(1.08)
+}
+
+.visual-strip figcaption {
+    min-height: 66px;
+    padding: 16px 18px;
+    color: var(--paper);
+    line-height: 1.5;
+    font-size: 11px
+}
+
+.facts {
+    background: linear-gradient(90deg, rgba(213, 82, 65, .1), rgba(21, 23, 22, .06)), url('../images/history/image26.png') right center/46% auto no-repeat
+}
+
+.facts__grid {
+    backdrop-filter: none
+}
+
+.fact--image img {
+    filter: grayscale(.15) contrast(1.1)
+}
+
+.triad {
+    background: linear-gradient(90deg, rgba(21, 23, 22, .97), rgba(21, 23, 22, .68)), url('../images/history/image55.png') center/cover
+}
+
+.game-cta__image {
+    filter: grayscale(.3) contrast(1.05)
+}
+
+.page-timeline .subpage-hero {
+    background-image: linear-gradient(90deg, rgba(21, 23, 22, .96), rgba(21, 23, 22, .6)), url('../images/history/image30.png')
+}
+
+.page-archive .subpage-hero {
+    background-image: linear-gradient(90deg, rgba(21, 23, 22, .96), rgba(21, 23, 22, .58)), url('../images/history/image59.png')
+}
+
+.page-games .subpage-hero {
+    background-image: linear-gradient(90deg, rgba(21, 23, 22, .95), rgba(21, 23, 22, .62)), url('../images/history/image45.png')
+}
+
+.page-about .subpage-hero {
+    background-image: linear-gradient(90deg, rgba(21, 23, 22, .96), rgba(21, 23, 22, .6)), url('../images/history/image55.png')
+}
+
+.page-sources .subpage-hero {
+    background-image: linear-gradient(90deg, rgba(21, 23, 22, .96), rgba(21, 23, 22, .62)), url('../images/history/image47.png')
+}
+
+.archive-item img {
+    filter: grayscale(.18) contrast(1.08)
+}
+
+.archive-panel:nth-child(1) {
+    background-image: url('../images/history/image19.png')
+}
+
+.archive-panel:nth-child(2) {
+    background-image: url('../images/history/image60.png')
+}
+
+.archive-panel:nth-child(3) {
+    background-image: url('../images/history/image36.png')
+}
+
+.archive-panel:nth-child(4) {
+    background-image: url('../images/history/image38.png')
+}
+
+@media(max-width:800px) {
+    .chapter-map {
+        padding-top: 45px
+    }
+
+    .chapter-grid {
+        gap: 2px
+    }
+
+    .chapter {
+        min-height: 430px;
+        padding: 22px
+    }
+
+    .visual-strip {
+        padding-top: 2px;
+        gap: 2px
+    }
+
+    .visual-strip img {
+        height: 240px
+    }
+
+    .visual-strip figcaption {
+        min-height: auto
+    }
+
+    .facts {
+        background-size: cover;
+        background-position: center
+    }
+
+    .facts__grid {
+        background: rgba(21, 23, 22, .82)
+    }
+}

@@ -1,0 +1,177 @@
+/* The vertical rail connects each archival image to its historical moment. */
+.page-timeline .story-events {
+    --timeline-date-width: 72px;
+    --timeline-gap: 42px;
+    position: relative;
+    border-top: 0;
+    padding: 4px 0 2px;
+}
+
+.page-timeline .story-events::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    bottom: 34px;
+    left: calc(var(--timeline-date-width) + (var(--timeline-gap) / 2));
+    width: 1px;
+    background: linear-gradient(var(--red-soft), rgba(240, 238, 231, .12) 12%, rgba(240, 238, 231, .12) 88%, var(--red-soft));
+}
+
+.page-timeline .story-event {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--timeline-date-width) minmax(0, 1fr);
+    column-gap: var(--timeline-gap);
+    padding: 0 0 clamp(54px, 6vw, 88px);
+    border: 0;
+}
+
+.page-timeline .story-event::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 3px;
+    left: calc(var(--timeline-date-width) + (var(--timeline-gap) / 2) - 6px);
+    width: 12px;
+    height: 12px;
+    border: 3px solid var(--ink);
+    border-radius: 50%;
+    background: var(--red);
+}
+
+.page-timeline .story-event time {
+    grid-column: 1;
+    display: block;
+    padding-top: 1px;
+    color: var(--red-soft);
+    line-height: 1.35;
+    text-align: right;
+}
+
+.page-timeline .story-event h3,
+.page-timeline .story-event p,
+.page-timeline .story-event__media {
+    grid-column: 2;
+}
+
+.page-timeline .story-event h3 {
+    margin: 0 0 14px;
+    max-width: 570px;
+}
+
+.page-timeline .story-event p {
+    max-width: 600px;
+}
+
+.page-timeline .story-event__media {
+    width: 100%;
+    margin: 27px 0 0;
+    padding: 8px;
+    background: rgba(240, 238, 231, .045);
+    border: 1px solid var(--line);
+    box-shadow: 12px 12px 0 rgba(213, 82, 65, .08);
+}
+
+.page-timeline .story-event__media img {
+    display: block;
+    width: 100%;
+    max-height: 430px;
+    margin: 0 auto;
+    object-fit: contain;
+    background: #111310;
+    filter: saturate(.72) contrast(1.04);
+    transition: transform .45s ease, filter .45s ease;
+}
+
+.page-timeline .story-event__media--portrait {
+    max-width: 76%;
+    margin-left: auto;
+}
+
+.page-timeline .story-event__media--wide img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.page-timeline .story-event:nth-child(even) .story-event__media:not(.story-event__media--portrait) {
+    width: 88%;
+    margin-left: auto;
+}
+
+.page-timeline .story-event__media:hover img {
+    filter: saturate(.92) contrast(1.02);
+    transform: scale(1.015);
+}
+
+.page-timeline .story-event:last-child {
+    padding-bottom: 8px;
+}
+
+.page-timeline .story-event:last-child::after {
+    content: "";
+    position: absolute;
+    left: calc(var(--timeline-date-width) + (var(--timeline-gap) / 2) - 3px);
+    bottom: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--red-soft);
+}
+
+@media (max-width: 800px) {
+    .page-timeline .story-events {
+        --timeline-date-width: 0px;
+        --timeline-gap: 32px;
+        padding-left: 32px;
+    }
+
+    .page-timeline .story-events::before {
+        top: 7px;
+        bottom: 30px;
+        left: 5px;
+    }
+
+    .page-timeline .story-event {
+        display: block;
+        padding-bottom: 54px;
+    }
+
+    .page-timeline .story-event::before {
+        top: 4px;
+        left: 0;
+    }
+
+    .page-timeline .story-event time {
+        padding: 0 0 13px;
+        text-align: left;
+    }
+
+    .page-timeline .story-event h3,
+    .page-timeline .story-event p,
+    .page-timeline .story-event__media,
+    .page-timeline .story-event:nth-child(even) .story-event__media:not(.story-event__media--portrait) {
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+    }
+
+    .page-timeline .story-event__media {
+        margin-top: 22px;
+        padding: 6px;
+        box-shadow: 8px 8px 0 rgba(213, 82, 65, .08);
+    }
+
+    .page-timeline .story-event:last-child::after {
+        left: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-timeline .story-event__media img {
+        transition: none;
+    }
+
+    .page-timeline .story-event__media:hover img {
+        transform: none;
+    }
+}

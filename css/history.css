@@ -1,0 +1,949 @@
+:root {
+    --ink: #151716;
+    --raised: #222522;
+    --paper: #f0eee7;
+    --muted: #b8b6ad;
+    --red: #d55241;
+    --red-soft: #ec8c7e;
+    --line: rgba(240, 238, 231, .16);
+    --sans: Arial, Helvetica, sans-serif;
+    --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace
+}
+
+* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body.history-site {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(900px 620px at 92% 8%, #402421 0%, transparent 68%), linear-gradient(160deg, #151716, #191b19 48%, #121412);
+    color: var(--paper);
+    font: 16px/1.5 var(--sans)
+}
+
+body.history-site:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .28;
+    background: repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(255, 255, 255, .014) 4px)
+}
+
+body.menu-open {
+    overflow: hidden
+}
+
+.history-site a {
+    color: inherit;
+    text-decoration: none
+}
+
+.history-site a:focus-visible,
+.history-site button:focus-visible {
+    outline: 2px solid var(--red-soft);
+    outline-offset: 4px
+}
+
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: var(--ink);
+    animation: loader-out .42s ease .48s forwards
+}
+
+.loader__mark {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -.07em;
+    line-height: 1.05;
+    text-align: center
+}
+
+.loader__mark span,
+.loader p {
+    font: 11px var(--mono);
+    letter-spacing: .12em
+}
+
+.loader p {
+    margin: 0;
+    color: var(--muted);
+    text-transform: uppercase
+}
+
+@keyframes loader-out {
+    to {
+        opacity: 0;
+        visibility: hidden
+    }
+}
+
+.site-header {
+    height: 72px;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 18px 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background .25s ease, box-shadow .25s ease, backdrop-filter .25s ease
+}
+
+.site-header.is-scrolled {
+    background: rgba(21, 23, 22, .88);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 rgba(240, 238, 231, .12)
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    line-height: 1
+}
+
+.brand span {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -.065em
+}
+
+.brand b {
+    font: 10px var(--mono);
+    font-weight: 400;
+    letter-spacing: .1em;
+    margin-top: 5px
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 26px;
+    margin-left: auto;
+    margin-right: 32px;
+    font: 11px var(--mono);
+    letter-spacing: .04em
+}
+
+.desktop-nav a {
+    padding: 7px 0;
+    border-bottom: 1px solid transparent;
+    transition: color .2s, border-color .2s
+}
+
+.desktop-nav a:hover,
+.desktop-nav a[aria-current=page] {
+    color: var(--red-soft);
+    border-color: currentColor
+}
+
+.header-cta,
+.hero-cta {
+    font: 11px var(--mono);
+    letter-spacing: .04em
+}
+
+.header-cta {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 6px
+}
+
+.header-cta span,
+.hero-cta span,
+.text-link span,
+.button-dark span {
+    font-size: 17px;
+    margin-left: 10px
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    color: inherit
+}
+
+.hero {
+    min-height: 100dvh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #121312
+}
+
+.hero__backdrop {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(16, 17, 16, .93), rgba(16, 17, 16, .74) 45%, rgba(16, 17, 16, .36)), url('../images/unsplash/hanoi-train.jpg') center/cover
+}
+
+.hero__backdrop:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(16, 17, 16, .55), transparent 45%)
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    padding: 0 8vw 12vh;
+    max-width: 850px
+}
+
+.kicker {
+    margin: 0 0 24px;
+    font: 11px var(--mono);
+    letter-spacing: .12em;
+    color: var(--red-soft)
+}
+
+.kicker.dark {
+    color: var(--red-soft)
+}
+
+.hero__title {
+    font-size: clamp(54px, 7.4vw, 108px);
+    line-height: 1.06;
+    letter-spacing: -.065em;
+    margin: 0 0 27px;
+    padding-top: .06em;
+    font-weight: 800
+}
+
+.hero__title em,
+.section-heading em,
+.intro__copy h2,
+.triad h2 em,
+.game-cta h2 em,
+.closing h2 em {
+    font-style: normal;
+    color: var(--red)
+}
+
+.hero__intro {
+    font-size: 18px;
+    max-width: 380px;
+    line-height: 1.55;
+    margin: 0 0 32px;
+    color: #eceae3
+}
+
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(240, 238, 231, .55);
+    padding: 15px 18px;
+    transition: background .2s, color .2s, transform .2s
+}
+
+.hero-cta:hover {
+    background: var(--paper);
+    color: var(--ink);
+    transform: translateY(-2px)
+}
+
+.hero__details {
+    position: absolute;
+    z-index: 1;
+    right: 5vw;
+    bottom: 7vw;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    font: 10px var(--mono);
+    letter-spacing: .1em;
+    color: #d5d3cc;
+    text-align: right
+}
+
+.section-light,
+.section-paper,
+.section-ink,
+.section-red {
+    position: relative;
+    padding: 120px 8vw;
+    background: transparent;
+    color: var(--paper);
+    border: 0
+}
+
+.section-paper {
+    background: linear-gradient(90deg, rgba(255, 255, 255, .025), transparent 70%)
+}
+
+.section-red {
+    background: linear-gradient(90deg, rgba(213, 82, 65, .14), transparent 70%)
+}
+
+.intro {
+    display: grid;
+    grid-template-columns: minmax(250px, .8fr) 1fr;
+    gap: 10vw;
+    align-items: center
+}
+
+.intro__ghost {
+    display: none
+}
+
+.intro__image {
+    margin: 0
+}
+
+.intro__image img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: saturate(.75) contrast(1.05)
+}
+
+.intro__image small {
+    font: 10px var(--mono);
+    display: block;
+    margin-top: 13px;
+    color: var(--muted)
+}
+
+.intro__copy h2,
+.section-heading h2,
+.triad h2,
+.game-cta h2,
+.closing h2 {
+    font-size: clamp(38px, 5vw, 76px);
+    line-height: 1.08;
+    letter-spacing: -.055em;
+    padding-top: .06em;
+    margin: 0 0 27px
+}
+
+.intro__copy p:not(.kicker),
+.game-cta__copy p:not(.kicker) {
+    max-width: 500px;
+    line-height: 1.75;
+    color: #cfcdc5
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 24px;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 8px;
+    font: 11px var(--mono);
+    letter-spacing: .04em
+}
+
+.chapter-map {
+    padding: 26px 8vw 118px
+}
+
+.chapter-map__head {
+    max-width: 720px;
+    margin: 0 0 50px
+}
+
+.chapter-map__head h2 {
+    font-size: clamp(36px, 4.5vw, 64px);
+    line-height: 1.08;
+    letter-spacing: -.055em;
+    padding-top: .06em;
+    margin: 0
+}
+
+.chapter-grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr 1fr;
+    gap: 20px
+}
+
+.chapter {
+    min-height: 500px;
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+    background: var(--raised) center/cover;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden
+}
+
+.chapter:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(15, 16, 15, .82), rgba(15, 16, 15, .12) 78%)
+}
+
+.chapter:nth-child(1) {
+    background-image: url('../images/unsplash/rice-field.jpg')
+}
+
+.chapter:nth-child(2) {
+    background-image: url('../images/unsplash/hanoi-building.jpg')
+}
+
+.chapter:nth-child(3) {
+    background-image: url('../images/unsplash/hanoi-red-flags.jpg')
+}
+
+.chapter__content {
+    width: 100%;
+    padding: 23px;
+    background: rgba(21, 23, 22, .9);
+    border-left: 2px solid var(--red)
+}
+
+.chapter__period {
+    font: 11px var(--mono);
+    color: var(--red-soft);
+    letter-spacing: .1em
+}
+
+.chapter h3 {
+    font-size: clamp(25px, 3vw, 40px);
+    line-height: 1.08;
+    letter-spacing: -.045em;
+    margin: 14px 0
+}
+
+.chapter p {
+    max-width: 350px;
+    margin: 0;
+    color: #dfddd5;
+    line-height: 1.6
+}
+
+.visual-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 0 8vw 120px
+}
+
+.visual-strip figure {
+    margin: 0;
+    min-height: 0;
+    background: var(--raised);
+    overflow: visible
+}
+
+.visual-strip img {
+    width: 100%;
+    height: 270px;
+    display: block;
+    object-fit: cover;
+    filter: saturate(.75);
+    transition: transform .45s ease
+}
+
+.visual-strip figure:hover img {
+    transform: scale(1.035)
+}
+
+.visual-strip figcaption {
+    display: block;
+    padding-top: 14px;
+    font: 10px var(--mono);
+    letter-spacing: .06em;
+    color: var(--muted)
+}
+
+.facts {
+    padding-top: 118px;
+    background: linear-gradient(90deg, rgba(213, 82, 65, .08), transparent 65%), url('../images/unsplash/hanoi-building.jpg') right center/44% auto no-repeat
+}
+
+.section-heading {
+    max-width: 650px;
+    margin-bottom: 62px
+}
+
+.facts__grid {
+    display: grid;
+    grid-template-columns: 1.05fr .8fr 1.05fr;
+    border-top: 1px solid var(--line);
+    background: rgba(21, 23, 22, .72);
+    backdrop-filter: blur(2px)
+}
+
+.fact {
+    min-height: 310px;
+    padding: 32px 30px 28px 15px;
+    border-right: 1px solid var(--line);
+    position: relative
+}
+
+.fact:nth-child(3) {
+    border: 0;
+    padding-left: 30px
+}
+
+.fact strong {
+    font-size: clamp(70px, 9vw, 124px);
+    letter-spacing: -.12em;
+    line-height: .9
+}
+
+.fact sup {
+    font: 11px var(--mono);
+    display: block;
+    margin-top: 18px;
+    color: var(--red-soft);
+    text-transform: uppercase
+}
+
+.fact p {
+    max-width: 235px;
+    line-height: 1.6;
+    color: #cfcdc5;
+    margin-top: 30px
+}
+
+.fact span {
+    position: absolute;
+    bottom: 25px;
+    right: 28px;
+    font: 10px var(--mono);
+    color: var(--red-soft)
+}
+
+.fact--image {
+    padding: 0 !important;
+    overflow: hidden
+}
+
+.fact--image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(.65)
+}
+
+.timeline-preview {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 10vw;
+    background: linear-gradient(90deg, rgba(21, 23, 22, .94), rgba(21, 23, 22, .78)), url('../images/unsplash/hanoi-red-flags.jpg') center/cover
+}
+
+.section-heading--light {
+    margin: 0
+}
+
+.section-heading--light h2 {
+    margin-bottom: 38px
+}
+
+.milestones {
+    border-top: 1px solid var(--line)
+}
+
+.milestone {
+    min-height: 105px;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 125px 1fr 30px;
+    gap: 20px;
+    align-items: center;
+    transition: padding .2s, color .2s, background .2s
+}
+
+.milestone:hover {
+    padding-left: 12px;
+    color: var(--red-soft);
+    background: rgba(255, 255, 255, .025)
+}
+
+.milestone time {
+    font: 11px var(--mono);
+    color: var(--muted)
+}
+
+.milestone h3 {
+    font-size: clamp(20px, 2.2vw, 31px);
+    letter-spacing: -.05em;
+    margin: 0;
+    font-weight: 500
+}
+
+.milestone span {
+    font: 11px var(--mono);
+    color: var(--muted);
+    text-align: right
+}
+
+.triad {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 10vw;
+    background: linear-gradient(90deg, rgba(21, 23, 22, .9), rgba(21, 23, 22, .56)), url('../images/unsplash/incense-village.jpg') center/cover
+}
+
+.triad__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-self: end
+}
+
+.triad-item {
+    border-top: 1px solid var(--line);
+    padding-top: 16px
+}
+
+.triad-item h3 {
+    font-size: 24px;
+    letter-spacing: -.05em
+}
+
+.triad-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 210px;
+    color: #cfcdc5
+}
+
+.triad-item b {
+    font: 11px var(--mono);
+    font-weight: 400;
+    color: var(--red-soft)
+}
+
+.game-cta {
+    display: grid;
+    grid-template-columns: 1fr .75fr;
+    gap: 9vw;
+    align-items: center
+}
+
+.game-cta__image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    filter: saturate(.65)
+}
+
+.button-dark {
+    display: inline-flex;
+    align-items: center;
+    background: var(--red);
+    color: #fff;
+    padding: 16px 20px;
+    font: 11px var(--mono);
+    margin-top: 18px;
+    transition: transform .2s, background .2s
+}
+
+.button-dark:hover {
+    background: #ec705f;
+    transform: translateY(-2px)
+}
+
+.closing {
+    text-align: center;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+}
+
+.site-footer {
+    background: rgba(0, 0, 0, .12);
+    padding: 62px 8vw 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    border-top: 1px solid var(--line)
+}
+
+.site-footer p {
+    font: 12px var(--mono);
+    color: var(--muted);
+    max-width: 230px;
+    margin: 0
+}
+
+.site-footer nav {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    font: 11px var(--mono)
+}
+
+.site-footer nav a:hover {
+    color: var(--red-soft)
+}
+
+.site-footer small {
+    grid-column: 1/-1;
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    font: 10px var(--mono);
+    color: #77756e
+}
+
+.scroll-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 30;
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(240, 238, 231, .45);
+    background: rgba(21, 23, 22, .86);
+    backdrop-filter: blur(10px);
+    color: var(--paper);
+    font-size: 19px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity .2s, transform .2s, visibility .2s;
+    cursor: pointer
+}
+
+.scroll-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none
+}
+
+.scroll-top:hover {
+    background: var(--red);
+    border-color: var(--red)
+}
+
+.mobile-menu {
+    display: none
+}
+
+@media(max-width:800px) {
+    .site-header {
+        height: 66px;
+        padding: 17px 6vw
+    }
+
+    .site-header.is-scrolled {
+        background: rgba(21, 23, 22, .94)
+    }
+
+    .desktop-nav,
+    .header-cta {
+        display: none
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        padding: 8px
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 27px;
+        height: 1px;
+        background: currentColor
+    }
+
+    .mobile-menu {
+        position: fixed;
+        z-index: 25;
+        inset: 0;
+        background: var(--ink);
+        padding: 105px 8vw;
+        display: none
+    }
+
+    .mobile-menu.is-open {
+        display: block
+    }
+
+    .mobile-menu nav {
+        display: flex;
+        flex-direction: column;
+        gap: 19px;
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: -.08em
+    }
+
+    .mobile-menu a[aria-current=page] {
+        color: var(--red-soft)
+    }
+
+    .mobile-menu>span {
+        position: absolute;
+        bottom: 34px;
+        right: 8vw;
+        font: 14px var(--mono);
+        line-height: 1.3;
+        color: var(--red-soft)
+    }
+
+    .hero__content {
+        padding: 0 8vw 12vh
+    }
+
+    .hero__title {
+        font-size: clamp(49px, 14vw, 76px);
+        line-height: 1.1;
+        letter-spacing: -.055em
+    }
+
+    .hero__details {
+        display: none
+    }
+
+    .section-light,
+    .section-paper,
+    .section-ink,
+    .section-red {
+        padding: 90px 8vw
+    }
+
+    .intro,
+    .timeline-preview,
+    .triad,
+    .game-cta {
+        display: block
+    }
+
+    .intro__image {
+        margin-bottom: 52px
+    }
+
+    .chapter-map {
+        padding: 20px 8vw 88px
+    }
+
+    .chapter-grid,
+    .visual-strip {
+        grid-template-columns: 1fr
+    }
+
+    .chapter {
+        min-height: 380px;
+        padding: 14px
+    }
+
+    .chapter__content {
+        padding: 20px
+    }
+
+    .visual-strip {
+        gap: 26px;
+        padding: 0 8vw 90px
+    }
+
+    .visual-strip img {
+        height: 260px
+    }
+
+    .facts {
+        padding-top: 95px;
+        background-size: cover
+    }
+
+    .facts__grid {
+        grid-template-columns: 1fr
+    }
+
+    .fact,
+    .fact:nth-child(3) {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 30px 0;
+        min-height: 230px
+    }
+
+    .fact--image {
+        height: 280px
+    }
+
+    .timeline-preview .section-heading {
+        margin-bottom: 55px
+    }
+
+    .milestone {
+        grid-template-columns: 90px 1fr 18px;
+        gap: 12px;
+        min-height: 122px
+    }
+
+    .milestone h3 {
+        font-size: 20px
+    }
+
+    .triad__title {
+        margin-bottom: 62px
+    }
+
+    .triad__items {
+        grid-template-columns: 1fr;
+        gap: 35px
+    }
+
+    .triad-item p {
+        max-width: 100%
+    }
+
+    .game-cta__image {
+        margin-top: 52px
+    }
+
+    .closing {
+        min-height: 460px
+    }
+
+    .closing h2 {
+        font-size: 51px
+    }
+
+    .site-footer {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 52px 8vw 28px
+    }
+
+    .site-footer small {
+        grid-column: auto
+    }
+
+    .scroll-top {
+        right: 16px;
+        bottom: 16px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior: auto
+    }
+
+    .loader {
+        display: none
+    }
+
+    .history-site * {
+        animation: none !important;
+        transition: none !important
+    }
+}
